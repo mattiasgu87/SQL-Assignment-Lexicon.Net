@@ -154,7 +154,7 @@ Values ('4', 'Järn', '19990101-4444', '3333333333');
 Select Ålder From Spelare Where Namn = 'Johan Andersson';
 
 #Operation 2
-Select Datum From Tävling Where Tävlingsnamn = 'Big Golf Cup SKövde';
+Select Datum From Tävling Where Tävlingsnamn = 'Big Golf Cup Skövde';
 
 #Operation 3
 Select Material From Klubba Where PersonNr In (Select PersonNr From Spelare Where Namn = 'Johan Andersson');
