@@ -6,62 +6,62 @@ use GolfCupVGDB;
 
 create table Spelare(
 	PersonNr char(13),
-    Namn varchar(20),
-    Ålder tinyint,
-    primary key(PersonNr)
+	Namn varchar(20),
+	Ålder tinyint,
+	primary key(PersonNr)
 )engine=innodb;
 
 create table Tävling(
 	Tävlingsnamn varchar(20),
-    Datum date,
-    primary key(Tävlingsnamn)
+	Datum date,
+	primary key(Tävlingsnamn)
 )engine=Innodb;
     
 create table Konstruktion(
 	SerialNr char(10),
-    Hårdhet tinyint,
-    primary key(SerialNr)
+	Hårdhet tinyint,
+	primary key(SerialNr)
 )engine=Innodb;
 
 create table Väder(
 	Typ varchar(15),
-    Vindstyrka float(3),
-    primary key(Typ)
+	Vindstyrka float(3),
+	primary key(Typ)
 )engine=Innodb;
 
 create table Jacka(
 	Märke varchar(15),
-    Storlek char(3),
-    Material varchar(15),
-    PersonNr char(13),
-    primary key(PersonNr, Märke),
-    foreign key(PersonNr) references Spelare(PersonNr) On Delete Cascade
+	Storlek char(3),
+	Material varchar(15),
+	PersonNr char(13),
+	primary key(PersonNr, Märke),
+	foreign key(PersonNr) references Spelare(PersonNr) On Delete Cascade
  )engine=Innodb;
  
 create table Klubba(
 	Nr tinyint,
-    Material varchar(15),
-    PersonNr char(15),
-    SerialNr char(10),
-    primary key(PersonNr, Nr),
+	Material varchar(15),
+	PersonNr char(15),
+	SerialNr char(10),
+	primary key(PersonNr, Nr),
  	foreign key(PersonNr) references Spelare(PersonNr) On Delete Cascade,
-    foreign key(SerialNr) references Konstruktion(SerialNr)
+	foreign key(SerialNr) references Konstruktion(SerialNr)
 )engine=Innodb;
 
 create table Delta(
 	Tävlingsnamn varchar(20),
-    PersonNr char(13),
-    primary key(Tävlingsnamn, PersonNr),
-    foreign key(Tävlingsnamn) references Tävling(Tävlingsnamn),
-    foreign key(PersonNr) references Spelare(PersonNr) On Delete Cascade
+	PersonNr char(13),
+	primary key(Tävlingsnamn, PersonNr),
+	foreign key(Tävlingsnamn) references Tävling(Tävlingsnamn),
+	foreign key(PersonNr) references Spelare(PersonNr) On Delete Cascade
 )engine=Innodb;
 
 create table HarVäder(
 	Typ varchar(15),
-    Tävlingsnamn varchar(25),
-    primary key(Typ, Tävlingsnamn),
-    foreign key(Typ) references Väder(Typ),
-    foreign key(Tävlingsnamn) references Tävling(Tävlingsnamn)
+	Tävlingsnamn varchar(25),
+	primary key(Typ, Tävlingsnamn),
+	foreign key(Typ) references Väder(Typ),
+	foreign key(Tävlingsnamn) references Tävling(Tävlingsnamn)
 )engine=Innodb;
 
 #Insert Spelare
